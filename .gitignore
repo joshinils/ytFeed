@@ -1,0 +1,15 @@
+tv.xml
+__pycache__
+
+.idea/
+# virtualenv for development
+.venv/
+
+.vscode
+guide.html
+
+_models
+_static
+_templates
+_app.py
+_wsgi.py
