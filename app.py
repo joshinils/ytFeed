@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import feedparser
+from flask import Flask
+from flask import render_template
 from pprint import pprint
 
 feedURLs = ["https://www.youtube.com/feeds/videos.xml?user=2veritasium"]
@@ -24,3 +26,20 @@ for feed in feeds:
                 pprint(element)
             break
         break
+
+
+app = Flask(__name__)
+
+
+def url_for(where, filename):
+    return filename
+
+
+@app.route('/')
+def index():
+    return render_template('hello.html', url_for=url_for)
+
+
+@app.route('/hello')
+def hello():
+    return 'Hello, World'
