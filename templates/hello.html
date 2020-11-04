@@ -7,7 +7,35 @@
 </head>
 
 <body>
-    <p>Hello, world!</p>
+    {% for kachel in kacheln %}
+    <div class="foo">
+        {% for elem in kachel %}
+        <div class="elem">
+            <a href="https://youtu.be/{{ elem["yt_videoid"] }}" class="thumbnail">
+                <img src="{{ elem["media_thumbnail"][0]["url"] }}" class="thumbnail_img">
+            </a>
+            <a href="https://youtu.be/{{ elem["yt_videoid"] }}" class="title">
+                {{ elem["title"] }}
+            </a>
+            <a href="https://www.youtube.com/channel/{{ elem["yt_channelid"] }}/videos" clasS="author">
+                {{ elem["author"] }}
+                •
+            </a>
+            <span class="views">
+                {{ round(int(elem["media_statistics"]["views"])/1000,2) }}k views
+            </span>
+            <!--
+                {% for title, subelem in elem.items() %}
+                <div class="subelem">
+                    {{ title }}
+                    <br /> {{ subelem }}
+                </div>
+                {% endfor %}
+            -->
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
 </body>
 
 </html>

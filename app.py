@@ -9,6 +9,8 @@ feedURLs = ["https://www.youtube.com/feeds/videos.xml?user=2veritasium"]
 feeds = []
 feeds.append(feedparser.parse(feedURLs[0]))
 
+kacheln = []
+
 for feed in feeds:
     for title, post in feed.items():
         if title == "bozo":
@@ -19,25 +21,26 @@ for feed in feeds:
 
         # pprint(post)
 
-        for video in post:
-            # pprint(video)
-            for name, element in video.items():
-                pprint(name)
-                pprint(element)
-            break
+        kacheln.append(post)
+        # for video in post:
+        #     # pprint(video)
+        #     for name, element in video.items():
+        #         pprint(name)
+        #         pprint(element)
+        #     break
         break
 
 
 app = Flask(__name__)
 
 
-def url_for(where, filename):
-    return filename
+# def url_for(where, filename):
+#     return filename
 
 
 @app.route('/')
 def index():
-    return render_template('hello.html', url_for=url_for)
+    return render_template('hello.html', kacheln=kacheln, int=int, round=round)
 
 
 @app.route('/hello')
