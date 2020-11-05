@@ -7,35 +7,28 @@
 </head>
 
 <body>
-    {% for kachel in kacheln %}
-    <div class="foo">
-        {% for elem in kachel %}
+    <div class="list">
+        {% for kachel in kacheln %}
         <div class="elem">
-            <a href="https://youtu.be/{{ elem["yt_videoid"] }}" class="thumbnail">
-                <img src="{{ elem["media_thumbnail"][0]["url"] }}" class="thumbnail_img">
+            <a href="https://youtu.be/{{ kachel.yt_videoid }}" class="thumbnail">
+                <img src="{{ kachel.media_thumbnail_url }}" class="thumbnail_img">
             </a>
-            <a href="https://youtu.be/{{ elem["yt_videoid"] }}" class="title">
-                {{ elem["title"] }}
+            <a href="https://youtu.be/{{ kachel.yt_videoid }}" class="title">
+                {{ kachel.title }}
             </a>
-            <a href="https://www.youtube.com/channel/{{ elem["yt_channelid"] }}/videos" clasS="author">
-                {{ elem["author"] }}
+            <a href="https://www.youtube.com/channel/{{ kachel.yt_channelid }}/videos" class="author">
+                {{ kachel.author }}
                 •
             </a>
             <span class="views">
-                {{ round(int(elem["media_statistics"]["views"])/1000,2) }}k views
+                {{ kachel.views_in_thousands() }}
             </span>
-            <!--
-                {% for title, subelem in elem.items() %}
-                <div class="subelem">
-                    {{ title }}
-                    <br /> {{ subelem }}
-                </div>
-                {% endfor %}
-            -->
+            <div class="published">
+                {{ kachel.uploaded_ago() }}
+            </div>
         </div>
         {% endfor %}
     </div>
-    {% endfor %}
 </body>
 
 </html>

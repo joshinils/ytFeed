@@ -5,19 +5,11 @@ body {
   margin: 0px;
 }
 
-.kachel {
-}
-
 .elem {
   background-color: #242324;
   padding: 3px;
   margin: 3px;
   max-width: 200px;
-}
-
-.subelem {
-  background-color: #240a24;
-  margin: 5px;
 }
 
 .thumbnail {
@@ -77,7 +69,8 @@ body {
   -moz-text-size-adjust: none;
 }
 
-.views {
+.views,
+.published {
   background-attachment: scroll;
   background-clip: border-box;
   background-color: rgba(0, 0, 0, 0);
@@ -123,7 +116,7 @@ body {
   -moz-text-size-adjust: none;
 }
 
-.foo {
+.list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
